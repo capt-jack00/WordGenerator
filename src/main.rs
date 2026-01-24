@@ -22,8 +22,9 @@ fn main() {
     println!("Generated terrain: ");    
     for row in &terrain_map {
         for tile in row {
-            println!("Tile: {}", tile);
+            print!(" {}", tile);
         }
+        print!("\n");
     }
 
 }
