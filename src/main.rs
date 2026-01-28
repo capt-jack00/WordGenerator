@@ -1,9 +1,12 @@
 use rand::Rng;
+use colored::*;
 
 fn main() {
     let mut rng_engine = rand::rng();                                                      //Random engine initialization
     let tiles: [char; 3] = ['g', 'w', 's'];                                         //Array with tiles, each char represents a tile. In this case: g = grass, w = water and s = sand
-    let max_ran_range= 2;                                                                //Max random range
+
+    let tiles_color: [colored::ColoredString; 3] = ["■".green(), "■".blue(), "■".yellow()];
+    let max_ran_range= 3;                                                                //Max random range
 
     let mut terrain_map: [[char; 3]; 3] = [
         ['-', '-', '-'],
@@ -18,13 +21,17 @@ fn main() {
         }
     }
 
-
     println!("Generated terrain: ");    
     for row in &terrain_map {
         for tile in row {
-            print!(" {}", tile);
+            match tile {
+                'g' => print!("{}", tiles_color[0]),
+                'w' => print!("{}", tiles_color[1]),
+                's' => print!("{}", tiles_color[2]),
+                _ => print!("{}", tile),
+            }
         }
-        print!("\n");
+        println!();
     }
 
 }
